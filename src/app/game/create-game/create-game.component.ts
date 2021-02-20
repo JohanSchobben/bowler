@@ -1,8 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {forbiddenValues} from '../validators/forbidden-values.validator';
 import {Player} from '../models/player';
-import {GameService} from '../game.service';
 
 @Component({
   selector: 'app-create-game',
@@ -13,7 +12,7 @@ export class CreateGameComponent implements OnInit {
   public playerNames: string[] = [];
   public form: FormGroup;
 
-  constructor(private gameService: GameService) {}
+  @Output() create: EventEmitter<Player[]> = new EventEmitter<Player[]>();
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -34,7 +33,7 @@ export class CreateGameComponent implements OnInit {
 
     } else {
       const players: Player[] = this.playerNames.map(name => ({name}));
-      this.gameService.createNewGame(players);
+      this.create.emit(players);
     }
   }
 }
