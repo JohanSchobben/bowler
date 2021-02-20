@@ -32,7 +32,7 @@ export class CreateGameComponent implements OnInit {
     if (!this.playerNames.length) {
 
     } else {
-      const players: Player[] = this.playerNames.map(name => ({name}));
+      const players: Player[] = this.playerNames.map(name => ({name, throws: []}));
       this.create.emit(players);
     }
   }

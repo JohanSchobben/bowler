@@ -1,4 +1,6 @@
 <ng-container [ngSwitch]="game?.state">
-  <app-game-score *ngSwitchCase="gameState.Playing"></app-game-score>
-  <app-create-game (create)="onCreate($event)" *ngSwitchDefault></app-create-game>
+  <app-game-score [game]="game"
+                  *ngSwitchCase="gameState.Playing"></app-game-score>
+  <app-create-game (create)="onCreate($event)"
+                   *ngSwitchDefault></app-create-game>
 </ng-container>
