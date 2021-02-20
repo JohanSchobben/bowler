@@ -22,6 +22,7 @@ export class CreateGameComponent implements OnInit {
 
   public onSubmit(): void {
     if (!this.form.valid) {
+
     } else {
       this.playerNames.push(this.form.controls.name.value);
       this.form.reset();
