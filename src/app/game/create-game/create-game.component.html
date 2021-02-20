@@ -1,1 +1,8 @@
-<p>create-game works!</p>
+<h1>New game</h1>
+<form [formGroup]="form" (submit)="onSubmit()">
+  <label for="name">Player name</label>
+  <input id="name" formControlName="name">
+</form>
+<ol>
+  <li *ngFor="let player of playerNames">{{player}}</li>
+</ol>

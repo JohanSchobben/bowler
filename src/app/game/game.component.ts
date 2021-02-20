@@ -14,8 +14,6 @@ export class GameComponent implements OnInit {
   constructor(private gameService: GameService) { }
 
   public ngOnInit(): void {
-    console.log(this.state);
-    console.log(this.gameState);
   }
 
 }

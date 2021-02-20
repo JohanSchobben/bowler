@@ -9,7 +9,7 @@ import {GameModule} from './game/game.module';
   ],
   imports: [
     BrowserModule,
-    GameModule
+    GameModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
