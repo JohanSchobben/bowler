@@ -14,6 +14,13 @@ export class GameComponent implements OnInit {
   constructor(private gameService: GameService) { }
 
   public ngOnInit(): void {
+    this.gameService.currentGame$.subscribe(game => {
+      if (!game) {
+        this.state = GameState.New;
+      } else {
+        this.state = GameState.Playing;
+      }
+    });
   }
 
 }
