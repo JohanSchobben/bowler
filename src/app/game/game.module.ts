@@ -4,8 +4,6 @@ import { CreateGameComponent } from './create-game/create-game.component';
 import { GameComponent } from './game.component';
 import {ReactiveFormsModule} from '@angular/forms';
 
-
-
 @NgModule({
   declarations: [CreateGameComponent, GameComponent],
   imports: [
