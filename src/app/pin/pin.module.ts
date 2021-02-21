@@ -8,6 +8,9 @@ import { PinComponent } from './pin.component';
   declarations: [PinComponent],
   imports: [
     CommonModule
+  ],
+  exports: [
+    PinComponent
   ]
 })
 export class PinModule { }

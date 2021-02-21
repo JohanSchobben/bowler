@@ -1,15 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import {PinService} from './services/pin.service';
 
 @Component({
   selector: 'app-pin',
   templateUrl: './pin.component.html',
   styleUrls: ['./pin.component.scss']
 })
-export class PinComponent implements OnInit {
+export class PinComponent {
+  previousPinInTurn: number = undefined;
 
-  constructor() { }
+  constructor(private pinService: PinService) { }
 
-  ngOnInit(): void {
+  public addPin(amount: number): void {
+    const isSecondThrow = this.previousPinInTurn !== undefined;
+    const totalOverTwo = this.previousPinInTurn + amount;
+
+    if (amount === 10) {
+      this.pinService.insertPin(amount);
+      return;
+    }
+
+    if (!isSecondThrow) {
+      this.previousPinInTurn = amount;
+      this.pinService.insertPin(amount);
+      return;
+    }
+
+    if (totalOverTwo <= 10) {
+      this.pinService.insertPin(amount);
+      this.previousPinInTurn = undefined;
+    }
   }
-
 }

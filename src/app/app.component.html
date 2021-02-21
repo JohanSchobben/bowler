@@ -1,1 +1,2 @@
 <app-game></app-game>
+<app-pin *ngIf="(gameState$ | async) === gameState.Playing"></app-pin>

@@ -1,19 +1,23 @@
-import {Injectable} from '@angular/core';
-import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
+import {Injectable, OnDestroy} from '@angular/core';
+import {BehaviorSubject, combineLatest, Observable, Subscription} from 'rxjs';
 import {Game} from './models/game';
 import {Player} from './models/player';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 import {GameState} from './game-state.enum';
+import {PinService} from '../pin/services/pin.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GameService {
+export class GameService implements OnDestroy {
   private gameSubject: BehaviorSubject<Game> = new BehaviorSubject<Game>(undefined);
   private turnsPlayedSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  private pinSubscription: Subscription;
 
-  constructor() {
-    this.currentFrame$.subscribe();
+  constructor(private readonly pinService: PinService) {
+    this.pinSubscription = this.pinService.pin$.subscribe(amount => {
+      this.addThrow(amount);
+    });
   }
 
   get currentGame$(): Observable<Game> {
@@ -53,18 +57,30 @@ export class GameService {
     this.turnsPlayedSubject.next(0);
   }
 
-  // private addThrow(value: number) {
-  //   const game = this.gameSubject.getValue();
-  //   const player = game.players[this.currentPlayerIndex];
-  //   const lastTurn = player.turns[player.turns.length - 1];
-  //
-  //   if (lastTurn === undefined) {
-  //     lastTurn.secondThrow = value;
-  //     this.turnsPlayedSubject.next();
-  //   } else {
-  //     const newTurn: Turn = {firstThrow: value};
-  //     player.turns.push(newTurn);
-  //   }
-  // }
+  public ngOnDestroy(): void {
+    this.pinSubscription.unsubscribe();
+  }
 
+  private addThrow(value: number): void {
+    const game = this.gameSubject.getValue();
+    const turnsPlayed = this.turnsPlayedSubject.getValue();
+    const currentPlayerIndex = turnsPlayed % game.players.length;
+    const player = game.players[currentPlayerIndex];
+    const lastTurn = player.turns[player.turns.length - 1];
+    const isNewTurn = !lastTurn || lastTurn.secondThrow !== undefined || lastTurn.firstThrow === 10;
+    const completesTurn = value === 10 || !isNewTurn;
+
+    if (isNewTurn) {
+      const turn = {firstThrow: value};
+      player.turns.push(turn);
+    } else {
+      lastTurn.secondThrow = value;
+    }
+
+    this.gameSubject.next(game);
+
+    if (completesTurn) {
+      this.turnsPlayedSubject.next(turnsPlayed + 1);
+    }
+  }
 }

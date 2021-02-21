@@ -3,7 +3,7 @@ import {Turn} from '../models/turn';
 
 @Pipe({
   name: 'score',
-  pure: true
+  pure: false
 })
 export class ScorePipe implements PipeTransform {
 
