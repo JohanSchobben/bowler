@@ -1,4 +1,6 @@
+import {Turn} from './turn';
+
 export interface Player {
   name: string;
-  throws: number[];
+  turns: Turn[];
 }
