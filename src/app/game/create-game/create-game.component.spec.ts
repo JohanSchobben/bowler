@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CreateGameComponent } from './create-game.component';
 import {By} from '@angular/platform-browser';
 
-fdescribe('CreateGameComponent', () => {
+describe('CreateGameComponent', () => {
   let component: CreateGameComponent;
   let fixture: ComponentFixture<CreateGameComponent>;
 
@@ -76,7 +76,7 @@ fdescribe('CreateGameComponent', () => {
     playButton.triggerEventHandler('click', {});
     fixture.detectChanges();
 
-    expect(eventEmitterspy).toHaveBeenCalledWith([{name: 'John', throws: []}]);
+    expect(eventEmitterspy).toHaveBeenCalledWith([{name: 'John', turns: []}]);
 
   });
 

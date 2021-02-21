@@ -1,7 +1,7 @@
 import {forbiddenValues} from './forbidden-values.validator';
 import {AbstractControl} from '@angular/forms';
 
-fdescribe('forbiddenValuesValidator', () => {
+describe('forbiddenValuesValidator', () => {
   it('should return no error when the value is null', () => {
     const value = null;
     const forbiddenValuesList = [];

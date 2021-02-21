@@ -24,29 +24,4 @@ export class PlayerScoreComponent {
       {firstThrow: 1, secondThrow: 3},
     ]
   };
-
-  calculateScore(turn: number): string {
-    if (!this.player.turns[turn]) {
-      return '';
-    }
-    console.log(this.player.name);
-    const score = this.player.turns.reduce((previousValue: number, currentValue: Turn, index: number, turns: Turn[]) => {
-      const firstDouble = turns[index + 1]?.firstThrow;
-      const secondDouble = turns[index + 1]?.secondThrow ?? turns[index + 2]?.firstThrow;
-      const currentTurnScore = currentValue.firstThrow + currentValue?.secondThrow;
-      const isStrike = currentValue.firstThrow === 10;
-      const isSpare = currentTurnScore === 10;
-
-      if (index > turn) { return previousValue; }
-      if (isStrike) {
-        return previousValue + currentValue.firstThrow + firstDouble + secondDouble;
-      }
-      if (isSpare) {
-        return previousValue + currentTurnScore + firstDouble;
-      }
-      return previousValue + currentTurnScore;
-    }, 0);
-
-    return isNaN(score) ? '' : score.toString();
-  }
 }

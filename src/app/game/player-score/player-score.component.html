@@ -1,11 +1,11 @@
 <h4>{{player.name}}</h4>
-<app-turn [turn]="player.turns[0]" [score]="calculateScore(0)"></app-turn>
-<app-turn [turn]="player.turns[1]" [score]="calculateScore(1)"></app-turn>
-<app-turn [turn]="player.turns[2]" [score]="calculateScore(2)"></app-turn>
-<app-turn [turn]="player.turns[3]" [score]="calculateScore(3)"></app-turn>
-<app-turn [turn]="player.turns[4]" [score]="calculateScore(4)"></app-turn>
-<app-turn [turn]="player.turns[5]" [score]="calculateScore(5)"></app-turn>
-<app-turn [turn]="player.turns[6]" [score]="calculateScore(6)"></app-turn>
-<app-turn [turn]="player.turns[7]" [score]="calculateScore(7)"></app-turn>
-<app-turn [turn]="player.turns[8]" [score]="calculateScore(8)"></app-turn>
-<app-turn [turn]="player.turns[9]" [score]="calculateScore(9)"></app-turn>
+<app-turn [turn]="player.turns[0]" [score]="player.turns | score:0"></app-turn>
+<app-turn [turn]="player.turns[1]" [score]="player.turns | score:1"></app-turn>
+<app-turn [turn]="player.turns[2]" [score]="player.turns | score:2"></app-turn>
+<app-turn [turn]="player.turns[3]" [score]="player.turns | score:3"></app-turn>
+<app-turn [turn]="player.turns[4]" [score]="player.turns | score:4"></app-turn>
+<app-turn [turn]="player.turns[5]" [score]="player.turns | score:5"></app-turn>
+<app-turn [turn]="player.turns[6]" [score]="player.turns | score:6"></app-turn>
+<app-turn [turn]="player.turns[7]" [score]="player.turns | score:7"></app-turn>
+<app-turn [turn]="player.turns[8]" [score]="player.turns | score:8"></app-turn>
+<app-turn [turn]="player.turns[9]" [score]="player.turns | score:9"></app-turn>
