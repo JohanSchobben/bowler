@@ -1,5 +1,5 @@
-<ng-container [ngSwitch]="game?.state">
-  <app-game-score [game]="game"
+<ng-container [ngSwitch]="gameState$ | async">
+  <app-game-score [game]="game$ | async"
                   *ngSwitchCase="gameState.Playing"></app-game-score>
   <app-create-game (create)="onCreate($event)"
                    *ngSwitchDefault></app-create-game>

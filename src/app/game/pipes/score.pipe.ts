@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import {Turn} from '../models/turn';
 
 @Pipe({
-  name: 'score'
+  name: 'score',
+  pure: true
 })
 export class ScorePipe implements PipeTransform {
 

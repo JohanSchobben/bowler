@@ -1,34 +1,28 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from 'rxjs';
+import {Component, OnInit} from '@angular/core';
 import {GameService} from './game.service';
 import {GameState} from './game-state.enum';
 import {Game} from './models/game';
 import {Player} from './models/player';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss']
 })
-export class GameComponent implements OnInit, OnDestroy {
+export class GameComponent implements OnInit {
   public gameState = GameState;
-  public game: Game;
-  private gameSubscription: Subscription;
+  public game$: Observable<Game>;
+  public gameState$: Observable<GameState>;
 
   constructor(private gameService: GameService) { }
 
   public ngOnInit(): void {
-    this.gameSubscription = this.gameService.currentGame$.subscribe(game => {
-      this.game = game;
-    });
+    this.game$ = this.gameService.currentGame$;
+    this.gameState$ = this.gameService.gameState$;
   }
 
   public onCreate(players: Player[]): void {
     this.gameService.createNewGame(players);
   }
-
-  public ngOnDestroy(): void {
-    this.gameSubscription.unsubscribe();
-  }
-
 }
