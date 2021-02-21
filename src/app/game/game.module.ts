@@ -5,9 +5,10 @@ import { GameComponent } from './game.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { GameScoreComponent } from './game-score/game-score.component';
 import { PlayerScoreComponent } from './player-score/player-score.component';
+import { TurnComponent } from './turn/turn.component';
 
 @NgModule({
-  declarations: [CreateGameComponent, GameComponent, GameScoreComponent, PlayerScoreComponent],
+  declarations: [CreateGameComponent, GameComponent, GameScoreComponent, PlayerScoreComponent, TurnComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
