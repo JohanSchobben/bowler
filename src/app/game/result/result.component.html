@@ -1,6 +1,7 @@
-
-
 <div class="wrapper">
-  <h1>Congrtatulations {{results[0].player.name}}</h1>
-  <div *ngFor="let result of results">{{result.player.name}} ({{result.total}})</div>
+  <h1>Congrtatulations {{results[0].player.name}}, You won the game</h1>
+
+  <ol class="ol">
+    <li *ngFor="let result of results">{{result.player.name}} ({{result.total}})</li>
+  </ol>
 </div>

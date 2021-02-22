@@ -14,6 +14,7 @@ export class CreateGameComponent implements OnInit {
 
   @Output() create: EventEmitter<Player[]> = new EventEmitter<Player[]>();
   showMaxPlayerError = false;
+  showNoPlayerError = false;
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -28,13 +29,14 @@ export class CreateGameComponent implements OnInit {
     }
     if (this.form.valid) {
       this.playerNames.push(this.form.controls.name.value);
+      this.showNoPlayerError = false;
       this.form.reset();
     }
   }
 
   public createGame(): void {
     if (!this.playerNames.length) {
-
+      this.showNoPlayerError = true;
     } else {
       const players: Player[] = this.playerNames.map(name => ({name, turns: []}));
       this.create.emit(players);

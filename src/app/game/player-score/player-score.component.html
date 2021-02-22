@@ -1,4 +1,4 @@
-<h4 class="name">{{player.name | upperFirst}}</h4>
+<h4 class="name">{{player.name | upperFirst }}</h4>
 <app-turn [turn]="player.turns[0]" [score]="player.turns | score:0"></app-turn>
 <app-turn [turn]="player.turns[1]" [score]="player.turns | score:1"></app-turn>
 <app-turn [turn]="player.turns[2]" [score]="player.turns | score:2"></app-turn>
@@ -9,3 +9,6 @@
 <app-turn [turn]="player.turns[7]" [score]="player.turns | score:7"></app-turn>
 <app-turn [turn]="player.turns[8]" [score]="player.turns | score:8"></app-turn>
 <app-turn [turn]="player.turns[9]" [score]="player.turns | score:9" [tenthTurn]="true"></app-turn>
+<div class="total">
+  <span>{{player.turns | score:player.turns.length - 1}}</span>
+</div>

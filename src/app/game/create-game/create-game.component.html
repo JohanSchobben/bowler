@@ -2,12 +2,14 @@
   <h1>New game</h1>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <label for="name">Player name</label>
-    <input id="name" formControlName="name" autocomplete="off">
+    <input id="name" formControlName="name" placeholder="press enter to add the player" autocomplete="off">
+    <small>press enter to add the player</small>
     <small class="error" *ngIf="form.controls.name.dirty && form.controls.name.errors?.required">name is required</small>
     <small class="error" *ngIf="form.controls.name.errors?.forbiddenValue">Name is already in use, Choose another name</small>
     <small class="error" *ngIf="showMaxPlayerError">A maximum of six player can play the game</small>
+    <small class="error" *ngIf="showNoPlayerError">At least one player must play the game</small>
   </form>
-  <ol>
+  <ol class="ol">
     <li *ngFor="let player of playerNames">{{player | upperFirst }}</li>
   </ol>
 

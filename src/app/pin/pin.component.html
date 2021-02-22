@@ -1,5 +1,5 @@
 
-<small *ngIf="showInvalidInput">The rolls in this turn are over 10. Please insert a valid value</small>
+<small class="error" *ngIf="showInvalidInput">The rolls in this turn are over 10. Please insert a valid value</small>
 <button class="btn" (click)="addPin(0)">0</button>
 <button class="btn" [disabled]="previousPinInTurn && previousPinInTurn + 1 > 10" (click)="addPin(1)">1</button>
 <button class="btn" [disabled]="previousPinInTurn && previousPinInTurn + 2 > 10" (click)="addPin(2)">2</button>
