@@ -1,4 +1,6 @@
 # Bowler
+__I have made some small changes to application after sending the enail to marielle. If you guys want to see the old version you get check out the old-version branch.__
+
 This project is build for cloudwise. It is an bowling application to add calculate a bowling score. the app is build using angular.
 
 ## some decisions made
