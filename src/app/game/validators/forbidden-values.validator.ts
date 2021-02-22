@@ -2,9 +2,9 @@ import {AbstractControl} from '@angular/forms';
 
 export const forbiddenValues = (values: string[]) =>
   (control: AbstractControl): {[key: string]: true} | null => {
-    const containsName = values.find(value => control?.value === value);
+    const containsName = values.find(value => control?.value?.trim() === value?.trim());
     if (containsName){
-      return {uniqueName: true};
+      return {forbiddenValue: true};
     }
     return null;
   };

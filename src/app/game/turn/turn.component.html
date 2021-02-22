@@ -1,6 +1,10 @@
-<span>{{turn?.firstThrow}}</span> + <span>{{turn?.secondThrow}}</span>
-
-<ng-container *ngIf="tenthTurn">
-  + <span>{{turn?.thirdThrow}}</span>
-</ng-container>
-= {{score}}
+<div class="turn-block">
+  <div class="throws">
+    <span class="turn">{{turn | strike }}</span> + <span class="turn">{{turn | spare}}</span>
+    <ng-container *ngIf="tenthTurn">
+      + <span class="turn">{{turn?.thirdThrow}}</span>
+    </ng-container>
+  </div>
+  <span class="score">{{score}}</span>
+</div>
+<div class="seperator"></div>

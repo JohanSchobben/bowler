@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  align-items: stretch;
+}
+
+.name {
+  font-size: 3rem;
+  padding: 1rem;
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

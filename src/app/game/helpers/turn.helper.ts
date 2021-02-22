@@ -38,9 +38,9 @@ export function addThrowToTurns(turns: Turn[], amount: number): Turn[] {
 }
 
 export function turnIsStrike(turn: Turn): boolean {
-  return turn.firstThrow === 10;
+  return turn?.firstThrow === 10;
 }
 
 export function turnIsSpare(turn: Turn): boolean {
-  return turn.firstThrow + turn.secondThrow === 10;
+  return turn?.firstThrow + turn?.secondThrow === 10;
 }

@@ -13,6 +13,7 @@ export class CreateGameComponent implements OnInit {
   public form: FormGroup;
 
   @Output() create: EventEmitter<Player[]> = new EventEmitter<Player[]>();
+  showMaxPlayerError = false;
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -21,9 +22,11 @@ export class CreateGameComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    if (!this.form.valid) {
-
-    } else {
+    if (this.playerNames.length >= 6){
+      this.showMaxPlayerError = true;
+      return;
+    }
+    if (this.form.valid) {
       this.playerNames.push(this.form.controls.name.value);
       this.form.reset();
     }

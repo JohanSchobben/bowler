@@ -1,3 +1,30 @@
-:host{
-  display: block;
+:host {
+  display: flex;
+  align-items: center;
 }
+.turn-block{
+  display: flex;
+  font-size: 1.4rem;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.turn {
+  width: 50px;
+  text-align: center;
+}
+.throws {
+  display: flex;
+  justify-content: center;
+}
+
+.score {
+  text-align: center;
+}
+.seperator {
+  display: inline-block;
+  width: 2px;
+  height: 100%;
+  background-color: black;
+
+ }

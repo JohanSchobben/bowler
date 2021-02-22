@@ -10,6 +10,9 @@ import { ScorePipe } from './pipes/score.pipe';
 import { ResultComponent } from './result/result.component';
 import { TotalPipe } from './pipes/total.pipe';
 import { OrderScorePipe } from './pipes/order-score.pipe';
+import { UpperFirstPipe } from './pipes/upper-first.pipe';
+import { StrikePipe } from './pipes/strike.pipe';
+import { SparePipe } from './pipes/spare.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { OrderScorePipe } from './pipes/order-score.pipe';
     ScorePipe,
     ResultComponent,
     TotalPipe,
-    OrderScorePipe
+    OrderScorePipe,
+    UpperFirstPipe,
+    StrikePipe,
+    SparePipe,
   ],
   imports: [
     CommonModule,

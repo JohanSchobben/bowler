@@ -114,7 +114,7 @@ describe('turnIsSpare', () => {
   });
 });
 
-fdescribe('addThrowToTurns', () => {
+describe('addThrowToTurns', () => {
   it('should add the throw if it is the first throw', () => {
     const turns: Turn[] = [];
 
