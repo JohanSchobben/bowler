@@ -20,6 +20,14 @@ Calculating the score should is done via a pipe so we don't mix change the model
 ### code styling
 I prefer making an unnecessary calculations over readability. Every function has it variables used defined at the top.
 
+### component organisation
+#### dumb and smart components
+The game component. is a smartcomponent this component will interact with service and will get the current game. The create game component is a dumb component. Instead of calling create game directly on the service, it will emit an event so the gamecomponent can create the game.
+
+#### conditionally rendering via states
+In the game component the components are rendered via state. At this we dont have to use multiple boolean properties (like a hasGame and a isGameOver property) to define what views is needed to be loaded. This will also make animating between different views a lot easier.
+
+
 ## some knwon bugs
 - Total score gets not updated correctly when a strike or spare is thrown. This can be fixed by creating a seperate pipe for the total score.
 - Second and third strike are shown as 10 in the last turn.
