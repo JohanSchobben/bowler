@@ -33,7 +33,6 @@ In the game component the components are rendered via state. At this we dont hav
 ## some knwon bugs
 - Total score gets not updated correctly when a strike or spare is thrown. This can be fixed by creating a seperate pipe for the total score.
 - Second and third strike are shown as 10 in the last turn.
-- results screen should check if the game is a draw
 
 ## testing
 Due to the lack of time I was not able to test everything. However some files do have unit tests. You can check the score pipe, the create-game component and the total helpers, to see how I would test all the code.
