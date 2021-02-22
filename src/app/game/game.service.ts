@@ -5,6 +5,7 @@ import {Player} from './models/player';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 import {GameState} from './game-state.enum';
 import {PinService} from '../pin/services/pin.service';
+import {addThrowToTurns, isTurnDone} from './helpers/turn.helper';
 
 @Injectable({
   providedIn: 'root'
@@ -22,15 +23,6 @@ export class GameService implements OnDestroy {
 
   get currentGame$(): Observable<Game> {
     return this.gameSubject.asObservable();
-  }
-
-  get currentFrame$(): Observable<number> {
-    return combineLatest([this.gameSubject, this.turnsPlayedSubject])
-      .pipe(
-        map(([game, turnsPlayed]) => {
-          return turnsPlayed % game?.players.length;
-        })
-      );
   }
 
   get gameState$(): Observable<GameState> {
@@ -66,21 +58,14 @@ export class GameService implements OnDestroy {
     const turnsPlayed = this.turnsPlayedSubject.getValue();
     const currentPlayerIndex = turnsPlayed % game.players.length;
     const player = game.players[currentPlayerIndex];
-    const lastTurn = player.turns[player.turns.length - 1];
-    const isNewTurn = !lastTurn || lastTurn.secondThrow !== undefined || lastTurn.firstThrow === 10;
-    const completesTurn = value === 10 || !isNewTurn;
 
-    if (isNewTurn) {
-      const turn = {firstThrow: value};
-      player.turns.push(turn);
-    } else {
-      lastTurn.secondThrow = value;
+    player.turns = addThrowToTurns(player.turns, value);
+
+    const newLastTurn = player.turns[player.turns.length - 1];
+    if (isTurnDone(newLastTurn, player.turns.length)) {
+      this.turnsPlayedSubject.next(turnsPlayed + 1);
     }
 
     this.gameSubject.next(game);
-
-    if (completesTurn) {
-      this.turnsPlayedSubject.next(turnsPlayed + 1);
-    }
   }
 }

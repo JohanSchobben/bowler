@@ -8,6 +8,7 @@ import {PinService} from './services/pin.service';
 })
 export class PinComponent {
   previousPinInTurn: number = undefined;
+  showInvalidInput = false;
 
   constructor(private pinService: PinService) { }
 
@@ -29,6 +30,10 @@ export class PinComponent {
     if (totalOverTwo <= 10) {
       this.pinService.insertPin(amount);
       this.previousPinInTurn = undefined;
+      this.showInvalidInput = false;
+      return;
     }
+
+    this.showInvalidInput = true;
   }
 }

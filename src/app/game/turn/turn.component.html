@@ -1,1 +1,6 @@
-<span>{{turn?.firstThrow}}</span> + <span>{{turn?.secondThrow}}</span> = {{score}}
+<span>{{turn?.firstThrow}}</span> + <span>{{turn?.secondThrow}}</span>
+
+<ng-container *ngIf="tenthTurn">
+  + <span>{{turn?.thirdThrow}}</span>
+</ng-container>
+= {{score}}

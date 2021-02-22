@@ -12,11 +12,11 @@ export class ScorePipe implements PipeTransform {
       return '';
     }
     const score = turns.reduce((previousValue: number, currentValue: Turn, index: number, turnsArray: Turn[]) => {
-      const firstDouble = turnsArray[index + 1]?.firstThrow;
-      const secondDouble = turnsArray[index + 1]?.secondThrow ?? turnsArray[index + 2]?.firstThrow;
       const currentTurnScore = currentValue.firstThrow + currentValue?.secondThrow;
       const isStrike = currentValue.firstThrow === 10;
       const isSpare = currentTurnScore === 10;
+      const firstDouble = currentValue.thirdThrow ?? turnsArray[index + 1]?.firstThrow;
+      const secondDouble = currentValue.thirdThrow ?? turnsArray[index + 1]?.secondThrow ?? turnsArray[index + 2]?.firstThrow;
 
       if (index > turnIndex) { return previousValue; }
       if (isStrike) {

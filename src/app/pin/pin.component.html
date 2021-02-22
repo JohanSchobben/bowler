@@ -1,11 +1,13 @@
+
+<small *ngIf="showInvalidInput">The rolls in this turn are over 10. Please insert a valid value</small>
 <button (click)="addPin(0)">0</button>
-<button (click)="addPin(1)">1</button>
-<button (click)="addPin(2)">2</button>
-<button (click)="addPin(3)">3</button>
-<button (click)="addPin(4)">4</button>
-<button (click)="addPin(5)">5</button>
-<button (click)="addPin(6)">6</button>
-<button (click)="addPin(7)">7</button>
-<button (click)="addPin(8)">8</button>
-<button (click)="addPin(9)">9</button>
-<button (click)="addPin(10)">10</button>
+<button [disabled]="previousPinInTurn && previousPinInTurn + 1 > 10" (click)="addPin(1)">1</button>
+<button [disabled]="previousPinInTurn && previousPinInTurn + 2 > 10" (click)="addPin(2)">2</button>
+<button [disabled]="previousPinInTurn && previousPinInTurn + 3 > 10" (click)="addPin(3)">3</button>
+<button [disabled]="previousPinInTurn && previousPinInTurn + 4 > 10" (click)="addPin(4)">4</button>
+<button [disabled]="previousPinInTurn && previousPinInTurn + 5 > 10" (click)="addPin(5)">5</button>
+<button [disabled]="previousPinInTurn && previousPinInTurn + 6 > 10" (click)="addPin(6)">6</button>
+<button [disabled]="previousPinInTurn && previousPinInTurn + 7 > 10" (click)="addPin(7)">7</button>
+<button [disabled]="previousPinInTurn && previousPinInTurn + 8 > 10" (click)="addPin(8)">8</button>
+<button [disabled]="previousPinInTurn && previousPinInTurn + 9 > 10" (click)="addPin(9)">9</button>
+<button [disabled]="previousPinInTurn && previousPinInTurn + 10 > 10" (click)="addPin(10)">10</button>

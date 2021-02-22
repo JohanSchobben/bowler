@@ -1,7 +1,7 @@
 import { ScorePipe } from './score.pipe';
 import {Turn} from '../models/turn';
 
-fdescribe('ScorePipe', () => {
+describe('ScorePipe', () => {
   let pipe: ScorePipe;
 
   beforeEach(() => {

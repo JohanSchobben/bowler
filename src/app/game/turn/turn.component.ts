@@ -9,6 +9,7 @@ import {Turn} from '../models/turn';
 export class TurnComponent implements OnInit {
   @Input() turn: Turn;
   @Input() score: string;
+  @Input() tenthTurn = false;
 
   ngOnInit(): void {
   }
