@@ -1,27 +1,33 @@
 # Bowler
+This project is build for cloudwise. It is an bowling application to add calculate a bowling score. the app is build using angular.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.0.
+## some decisions made
+### models
+Models should only contain some data that is needed they should not contain any business logic. The data inside the model can easily be stored in some server.
 
-## Development server
+### services
+services should be responsible for managing state inside the application. In this case the game service is responsible for adding throws and keeping track of the game state.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### exception handling
+Exception handling (like the max amount of player in the game), should be checked inside the component, they can then easily show an error message to the user to provide them instructions on what they should fix.
 
-## Code scaffolding
+### seperate pin module
+The inserting pins is done via a seperate module. It will push the values to a subject. Via this method, the way of inserting pin can be easily switched without changing to much code.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### pipes calculate data
+Calculating the score should is done via a pipe so we don't mix change the model data.
 
-## Build
+### code styling
+I prefer making an unnecessary calculations over readability. Every function has it variables used defined at the top.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## some knwon bugs
+- Total score gets not updated correctly when a strike or spare is thrown. This can be fixed by creating a seperate pipe for the total score.
+- Second and third strike are shown as 10 in the last turn.
+- results screen should check if the game is a draw
 
-## Running unit tests
+## testing
+Due to the lack of time I was not able to test everything. However some files do have unit tests. You can check the score pipe, the create-game component and the total helpers, to see how I would test all the code.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### things that i can improve
+__styling__ use more responsive way of setting up styles instead of using pixels for width
+make code.
