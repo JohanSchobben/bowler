@@ -2,6 +2,8 @@
   <app-game-score [game]="game$ | async"
                   *ngSwitchCase="gameState.Playing"></app-game-score>
   <app-result [results]="(game$ | async).players | orderScore"
+              (rematch)="onRematch()"
+              (newGame)="onNewGame()"
               *ngSwitchCase="gameState.Over"></app-result>
   <app-create-game (create)="onCreate($event)"
                    *ngSwitchDefault></app-create-game>

@@ -3,7 +3,8 @@ import {Turn} from '../models/turn';
 import {getTotalScore} from '../helpers/total.helper';
 
 @Pipe({
-  name: 'total'
+  name: 'total',
+  pure: false
 })
 export class TotalPipe implements PipeTransform {
 

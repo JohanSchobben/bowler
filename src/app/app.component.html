@@ -1,2 +1,8 @@
 <app-game></app-game>
 <app-pin *ngIf="(gameState$ | async) === gameState.Playing"></app-pin>
+
+<div class="card">
+  <h4>New version</h4>
+  <p>There is a new version available. Start using it</p>
+  <button class="btn" (click)="reload()">get new version</button>
+</div>

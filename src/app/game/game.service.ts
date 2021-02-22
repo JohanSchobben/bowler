@@ -49,10 +49,6 @@ export class GameService implements OnDestroy {
     this.turnsPlayedSubject.next(0);
   }
 
-  public ngOnDestroy(): void {
-    this.pinSubscription.unsubscribe();
-  }
-
   private addThrow(value: number): void {
     const game = this.gameSubject.getValue();
     const turnsPlayed = this.turnsPlayedSubject.getValue();
@@ -67,5 +63,25 @@ export class GameService implements OnDestroy {
     }
 
     this.gameSubject.next(game);
+  }
+
+  public ngOnDestroy(): void {
+    this.pinSubscription.unsubscribe();
+  }
+
+  public clearGame(): void {
+    this.gameSubject.next(undefined);
+    this.turnsPlayedSubject.next(0);
+  }
+
+  public rematch(): void {
+    const game =this.gameSubject.getValue();
+    const players = game.players.map(player => {
+      return {
+        name: player.name,
+        turns: []
+      };
+    });
+    this.createNewGame(players);
   }
 }

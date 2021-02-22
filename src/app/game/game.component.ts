@@ -14,15 +14,6 @@ export class GameComponent implements OnInit {
   public gameState = GameState;
   public game$: Observable<Game>;
   public gameState$: Observable<GameState>;
-  player: Player = {
-    name: 'Bob',
-    turns: [
-      {firstThrow: 2, secondThrow: 7},
-      {firstThrow: 10},
-      {firstThrow: 1, secondThrow: 8},
-      {firstThrow: 0, secondThrow: 10},
-    ]
-  };
 
   constructor(private gameService: GameService) { }
 
@@ -33,5 +24,13 @@ export class GameComponent implements OnInit {
 
   public onCreate(players: Player[]): void {
     this.gameService.createNewGame(players);
+  }
+
+  public onRematch() {
+    this.gameService.rematch()
+  }
+
+  public onNewGame() {
+    this.gameService.clearGame();
   }
 }
